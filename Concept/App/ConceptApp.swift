@@ -10,9 +10,13 @@ import SwiftUI
 
 @main
 struct ConceptApp: App {
+    
+    @StateObject private var navigationStore = NavigationStore()
+    
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(navigationStore: navigationStore)
         }
     }
 }
