@@ -11,12 +11,23 @@ import SwiftUI
 @main
 struct ConceptApp: App {
     
-    @StateObject private var navigationStore = NavigationStore()
-    
+    @StateObject private var navigationStore = ReviewNavigationStore()
     
     var body: some Scene {
         WindowGroup {
-            ContentView(navigationStore: navigationStore)
+            TabView {
+                ContentView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                
+                ReviewHome()
+                    .tabItem {
+                        Label("Review", systemImage: "square.and.pencil")
+                    }
+                    .environmentObject(navigationStore)
+            }
+            
         }
     }
 }
